@@ -1,6 +1,6 @@
 import Link from 'next/link';
 // import { motion } from 'framer-motion';
-import styles from './style/HeroSection.css';
+import styles from './style/HeroSection.module.css';
 // import { useScroll } from '../../Hook/useScroll';
 import { HiOutlineArrowUpRight } from 'react-icons/hi2';
 

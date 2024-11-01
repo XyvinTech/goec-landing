@@ -1,21 +1,21 @@
-import React, { Fragment } from "react";
-import styles from "./style/HomePage.css";
+import React from "react";
+// import styles from "./style/HomePage.css";
 import HeroSection from "./HeroSection";
-import CountDownCard from "./CountDownCard";
-import HomeBlogCard from "./HomeBlogCard";
-import HomeChargingCard from "./HomeChargingCard";
-import InvestCard from "./InvestCard";
-import ConvenientCharging from "./ConvenientCharging";
-import LogoCard from "./LogoCard";
-import poweringImage from './assets/goec-powering.jpg';
-import HowToChargeCard from "./HowToChargeCard";
-import BlogsCardPage from "./BlogsCardPage";
+// import CountDownCard from "./CountDownCard";
+// import HomeBlogCard from "./HomeBlogCard";
+// import HomeChargingCard from "./HomeChargingCard";
+// import InvestCard from "./InvestCard";
+// import ConvenientCharging from "./ConvenientCharging";
+// import LogoCard from "./LogoCard";
+// import poweringImage from './assets/goec-powering.jpg';
+// import HowToChargeCard from "./HowToChargeCard";
+// import BlogsCardPage from "./BlogsCardPage";
 
 const HomePage = () => {
   return (
     <div className="w-screen">
       <HeroSection />
-      <CountDownCard />
+      {/* <CountDownCard />
       <div className={styles.blogCharge}>
         <HomeBlogCard
           img={poweringImage}
@@ -57,7 +57,7 @@ const HomePage = () => {
       <LogoCard/>
       <BlogsCardPage />
       <Testimonials />
-      <ContactUs />
+      <ContactUs /> */}
     </div>
   );
 };

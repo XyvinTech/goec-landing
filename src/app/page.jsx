@@ -13,8 +13,8 @@ export default function Home() {
     <div className="w-screen">
     
 
-{/* 
-<HomePage/> */}
+
+<HomePage/>
 
     </div>
   );
