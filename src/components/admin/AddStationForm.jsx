@@ -164,7 +164,11 @@ const AddStationForm = () => {
                   name="rating"
                   control={control}
                   render={({ field }) => (
-                    <RatingComponent {...field} maxRating={5} />
+                    <RatingComponent
+                      value={field.value}
+                      onChange={(rating) => field.onChange(rating)}
+                      maxRating={5}
+                    />
                   )}
                 />
               </div>
@@ -205,17 +209,17 @@ const AddStationForm = () => {
 
             <div className=" h-fit flex items-center gap-8">
               <div className=" h-fit flex items-center gap-1">
-              <Controller
-      name="restRoom"
-      control={control}
-      render={({ field }) => (
-        <Checkbox
-          checked={field.value}
-          onCheckedChange={(checked) => field.onChange(checked)}
-          className="border-[#C9CCCF]"
-        />
-      )}
-    />
+                <Controller
+                  name="restRoom"
+                  control={control}
+                  render={({ field }) => (
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={(checked) => field.onChange(checked)}
+                      className="border-[#C9CCCF]"
+                    />
+                  )}
+                />
                 <label className="text-sm text-[#202223]" htmlFor="restRoom">
                   Rest room
                 </label>

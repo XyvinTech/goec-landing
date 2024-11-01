@@ -1,4 +1,6 @@
-import { inter, roboto } from "./admin/font";
+
+import { roboto } from "./font";
+import { inter } from "./font";
 import "./globals.css";
 
 export const metadata = {

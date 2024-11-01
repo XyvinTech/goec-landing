@@ -4,6 +4,12 @@ import * as Popover from "@radix-ui/react-popover";
 
 function ComboBox({ items, onChange, placeholder, value, disabled }) {
   const [open, setOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Filter items based on search term
+  const filteredItems = items.filter((item) =>
+    item.label.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <Popover.Root open={open} onOpenChange={setOpen}>
@@ -28,29 +34,36 @@ function ComboBox({ items, onChange, placeholder, value, disabled }) {
             <input
               type="text"
               placeholder={placeholder || "Search..."}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full p-2 mb-2 border-b focus:outline-none"
             />
 
             <ul className="max-h-40 overflow-y-auto">
-              {items.map((item) => (
-                <li
-                  key={item.value}
-                  onClick={() => {
-                    onChange(item.value);
-                    setOpen(false);
-                  }}
-                  className={`cursor-pointer p-2 rounded ${
-                    value === item.value
-                      ? "bg-gray-400 text-black"
-                      : "hover:bg-gray-200"
-                  }`}
-                >
-                  {value === item.value && (
-                    <Check className="inline-block mr-2 h-4 w-4" />
-                  )}
-                  {item.label}
-                </li>
-              ))}
+              {filteredItems.length > 0 ? (
+                filteredItems.map((item) => (
+                  <li
+                    key={item.value}
+                    onClick={() => {
+                      onChange(item.value);
+                      setOpen(false);
+                      setSearchTerm(""); // Clear search after selection
+                    }}
+                    className={`cursor-pointer p-2 rounded ${
+                      value === item.value
+                        ? "bg-gray-400 text-black"
+                        : "hover:bg-gray-200"
+                    }`}
+                  >
+                    {value === item.value && (
+                      <Check className="inline-block mr-2 h-4 w-4" />
+                    )}
+                    {item.label}
+                  </li>
+                ))
+              ) : (
+                <li className="p-2 text-gray-500">No results found</li>
+              )}
             </ul>
           </div>
         </Popover.Content>
