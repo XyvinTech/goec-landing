@@ -56,7 +56,7 @@ const Page = () => {
     const { success, error } = await login(email, password);
     setIsLoading(false);
     if (success) {
-      router.push('/stations');
+      router.push('/admin/stations');
     } else {
       console.log('Invalid login credentials. Please try again.');
     //   toast.error(error || 'Failed to login. Please try again.', {

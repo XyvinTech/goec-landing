@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const Header = ({ toggleSidebar, isSidebarCollapsed }) => {
   return (
-    <div className="bg-white p-4 px-6 flex items-center justify-between">
+    <div className="bg-white p-5 px-6 h-fit flex items-center justify-between">
       <motion.div
         onClick={toggleSidebar}
         animate={{ rotate: isSidebarCollapsed ? 180 : 0 }}
@@ -15,7 +15,7 @@ const Header = ({ toggleSidebar, isSidebarCollapsed }) => {
           width={18}
           height={18}
           alt="Toggle Sidebar"
-          className="cursor-pointer"
+          className="cursor-pointer"style={{ display: 'block' }}
         />
       </motion.div>
       <div className="flex items-center">

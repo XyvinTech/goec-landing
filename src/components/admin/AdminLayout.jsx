@@ -17,7 +17,7 @@ const AdminLayout = ({ children }) => {
   const isActivePath = (path) => pathname === path;
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen overflow-hidden">
       <motion.div
         className="bg-primary flex flex-col"
         initial={{ width: isSidebarCollapsed ? "5%" : "16%" }}
@@ -30,41 +30,32 @@ const AdminLayout = ({ children }) => {
 
         <div className="flex flex-col space-y-2">
           <Link
-            href="/add"
-            className={`flex items-center gap-2 py-2 px-6 text-[#dadada] hover:bg-blue-600 ${
-              isActivePath("/add") && "bg-white text-primary"
+            href="/admin/add"
+            className={`flex items-center gap-2 py-2 px-6 hover:bg-blue-600 ${
+              isActivePath("/admin/add") ? "bg-white text-primary " : "text-[#dadada]"
             }`}
           >
-            <Plus
-              size={20}
-              color={isActivePath("/add") ? "#13F2AD" : "#dadada"}
-            />
+            <Plus size={20} color={isActivePath("/admin/add") ? "#13F2AD" : "#dadada"} />
             {!isSidebarCollapsed && "Add stations"}
           </Link>
 
           <Link
-            href="/stations"
-            className={`flex items-center gap-2 py-2 px-6 text-[#dadada] hover:bg-blue-600 ${
-              isActivePath("/stations") && "bg-white text-primary"
+            href="/admin/stations"
+            className={`flex items-center gap-2 py-2 px-6 hover:bg-blue-600 ${
+              isActivePath("/admin/stations") ? "bg-white text-primary " : "text-[#dadada]"
             }`}
           >
-            <Gauge
-              size={20}
-              color={isActivePath("/stations") ? "#13F2AD" : "#dadada"}
-            />
+            <Gauge size={20} color={isActivePath("/admin/stations") ? "#13F2AD" : "#dadada"} />
             {!isSidebarCollapsed && "Charging stations"}
           </Link>
 
           <Link
             href="/upload"
-            className={`flex items-center gap-2 py-2 px-6 text-[#dadada] hover:bg-blue-600 ${
-              isActivePath("/upload") && "bg-white text-primary"
+            className={`flex items-center gap-2 py-2 px-6 hover:bg-blue-600 ${
+              isActivePath("/upload") ? "bg-white text-primary" : "text-[#dadada]"
             }`}
           >
-            <UploadCloud
-              size={20}
-              color={isActivePath("/upload") ? "#13F2AD" : "#dadada"}
-            />
+            <UploadCloud size={20} color={isActivePath("/upload") ? "#13F2AD" : "#dadada"} />
             {!isSidebarCollapsed && "Bulk Upload"}
           </Link>
 
@@ -77,13 +68,13 @@ const AdminLayout = ({ children }) => {
           </button>
         </div>
       </motion.div>
-      <div className="flex-grow">
-        <Header
-          toggleSidebar={toggleSidebar}
-          isSidebarCollapsed={isSidebarCollapsed}
-        />
 
-        <main className="p-8 bg-[#f5f5f5]">{children}</main>
+      <div className="flex flex-col flex-grow">
+        <Header toggleSidebar={toggleSidebar} isSidebarCollapsed={isSidebarCollapsed} />
+
+        <main className="flex-grow overflow-auto bg-[#f5f5f5]">
+          {children}
+        </main>
       </div>
     </div>
   );
